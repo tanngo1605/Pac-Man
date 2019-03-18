@@ -17,12 +17,14 @@ public class Game extends Canvas implements Runnable,KeyListener{
 	public boolean isRunning = false;
 	public Thread thread;
 	public Player player;
+	public Map map;
 	public Game(){  //constructor
 		Dimension dimension = new Dimension(Game.width,Game.height);
 		setPreferredSize(dimension);
 		setMinimumSize(dimension);
 		setMaximumSize(dimension);
 		addKeyListener(this);
+		map = new Map();
 	}
 	
 	private void update(){ //update the graphics
@@ -34,6 +36,7 @@ public class Game extends Canvas implements Runnable,KeyListener{
 		Graphics g = bs.getDrawGraphics();
 		g.setColor(Color.black);
 		g.fillRect(0, 0, Game.width,Game.height);
+		map.update(g);
 		g.dispose();
 		bs.show();
 	}
